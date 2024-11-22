@@ -11,26 +11,26 @@ This Pine Script indicator combines multiple technical analysis tools into a sin
 
 ## Features
   
-#📊 Exponential Moving Averages (EMAs):
+# 📊 Exponential Moving Averages (EMAs):
 Configurable short (12) and big (21) EMAs to identify trends.
 Includes additional EMAs for 20, 50, 100, and 200 periods.
 Color-coded EMAs to visually distinguish uptrends (green) and downtrends (red).
 Adjustable line thickness for better customization.
-#🚀 Crossover Detection:
+# 🚀 Crossover Detection:
 Detects bullish and bearish crossovers between small and big EMAs.
 Displays arrows to highlight crossover points on the chart.
 Customizable arrow size and colors for better visibility.
-#📈 Bollinger Bands:
+# 📈 Bollinger Bands:
 Configurable Bollinger Bands with adjustable:
 Moving average type (SMA, EMA, SMMA, WMA, VWMA).
 Length (default: 20).
 Multiplier for standard deviation (default: 2.0).
 Visual fill between upper and lower bands for clarity.
-#🔔 Alerts:
+# 🔔 Alerts:
 Alerts for bullish and bearish crossovers.
 Easily customizable to fit your trading strategy.
 
-#How to Use
+# How to Use
 - Copy and paste the Pine Script code into your TradingView editor.
 - Customize the settings for EMAs, Bollinger Bands, and arrows in the script input panel.
 - Apply the script to your chart to start analyzing trends and volatility.
