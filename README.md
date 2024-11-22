@@ -52,3 +52,4 @@ This Pine Script indicator combines multiple technical analysis tools into a sin
 - Length: Adjustable from 1 to 500.
 - Multiplier for standard deviation.
 
+# Artur Gilowski
