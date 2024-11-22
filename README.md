@@ -1,4 +1,9 @@
-﻿# TradingView_INDC
+﻿<div style="text-align: center;"> 
+ <h1>
+ TradingView_INDC
+ </h1>
+</div>
+ 
 - Combined EMA and Bollinger Bands Indicator
 This Pine Script indicator combines multiple technical analysis tools into a single overlay for enhanced trading insights. It includes exponential moving averages (EMAs), Bollinger Bands, and crossover detection, making it ideal for traders seeking a comprehensive market analysis tool.
 ---
