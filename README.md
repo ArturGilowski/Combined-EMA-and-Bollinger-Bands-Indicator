@@ -2,7 +2,8 @@
  <h1>
  TradingView_INDICATOR
  </h1>
-</div>
+</div> 
+
 ### Combined EMA and Bollinger Bands Indicator by Artur Gilowski
 ## Combined EMA and Bollinger Bands Indicator
 ### This Pine Script indicator combines multiple technical analysis tools into a single overlay for enhanced trading insights.
