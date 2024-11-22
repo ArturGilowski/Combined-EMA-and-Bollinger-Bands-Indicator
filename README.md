@@ -30,11 +30,11 @@ This Pine Script indicator combines multiple technical analysis tools into a sin
 - Alerts for bullish and bearish crossovers.
 - Easily customizable to fit your trading strategy.
 
-# How to Use - ## Installation
+# How to Use - Installation
 - Copy and paste the Pine Script code from this repository into your TradingView Pine Script Editor.
  ![image](https://github.com/user-attachments/assets/7c175a12-aca2-4fd5-b907-b69f78ef3414)
 - Customize the settings for EMAs, Bollinger Bands, and arrows in the script input panel.
-- Click # Save to apply the indicator.
+- Click "Save" to apply the indicator.
   ![image](https://github.com/user-attachments/assets/2a857459-b9be-47af-a06d-f15e2387ea64)
 - Customize settings as per your requirements.
 - Now you can start analyzing trends. 
