@@ -1,6 +1,6 @@
 ﻿<div style="text-align: center;"> 
  <h1>
- TradingView_INDC
+ TradingView_INDICATOR
  </h1>
 </div>
  
@@ -40,7 +40,6 @@ This Pine Script indicator combines multiple technical analysis tools into a sin
 - Now you can start analyzing trends. 
 
 ## Configuration Options
-# EMAs:
 - EMA Small Value (default: 12)
 - EMA Big Value (default: 21)
 - Additional EMAs: 20, 50, 100, 200 periods.
