@@ -32,6 +32,7 @@ This Pine Script indicator combines multiple technical analysis tools into a sin
 
 # How to Use
 - Copy and paste the Pine Script code into your TradingView editor.
+- ![image](https://github.com/user-attachments/assets/7c175a12-aca2-4fd5-b907-b69f78ef3414)
 - Customize the settings for EMAs, Bollinger Bands, and arrows in the script input panel.
 - Apply the script to your chart to start analyzing trends and volatility.
 - Screenshots
