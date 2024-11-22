@@ -1,0 +1,47 @@
+//Copyrights belong to TopG Professor Michael from The Real World.
+
+//@version=5
+indicator("Michael's EMA", overlay=true)
+src = close
+
+// Input options for EMAs
+emaS_value = input.int(12, minval=1, title="EMA Small - Value")
+emaS = ta.ema(close, emaS_value)
+emaB_value = input.int(21, minval=1, title="EMA Big - Value")
+emaB = ta.ema(close, emaB_value)
+
+EMA_UpTrend_color = input(color.green, title="EMA UpTrend Color")
+EMA_DownTrend_color = input(#ff0000, title="EMA DownTrend Color")
+
+// Input options for Arrows
+arrowColorUp = input(color.green, title="Arrow Up Color")
+arrowColorDown = input(#ff0000, title="Arrow Down Color")
+arrowSize = input.int(50, minval=1, title="Arrow Size")
+
+// Rules For Up and Down EMA trends
+EMA_UpTrend = emaS >= emaB
+EMA_DownTrend = emaS < emaB
+
+// Rules for Arrows by using EMAs Crossover state
+var float crossover = na
+// Determine crossover state
+if (crossover == 1)
+    crossover := na
+else if (EMA_UpTrend[1] and EMA_DownTrend)
+    crossover := -1
+else if (crossover == -1)
+    crossover := na
+else if (EMA_DownTrend[1] and EMA_UpTrend)
+    crossover := 1
+
+
+// Plot EMAs on chart
+plot(emaS, color=color.new(EMA_UpTrend ? EMA_UpTrend_color : EMA_DownTrend_color, 0), title="EMA Small", style=plot.style_line, linewidth=1, offset=0)
+plot(emaB, color=color.new(EMA_UpTrend ? EMA_UpTrend_color : EMA_DownTrend_color, 0), title="EMA Big", style=plot.style_line, linewidth=2, offset=0)
+
+// Plot arrow when EMAs cross
+plotarrow(crossover == 1 ? 1 : crossover == -1 ? -1 : na, title="Show Arrow on EMAs Cross", colorup=arrowColorUp, colordown=arrowColorDown, maxheight=arrowSize, offset=+1, display=display.none)
+
+// Alerts
+alertcondition(crossover == 1, title="EMA Trend Up", message="EMA Trend Up - {{ticker}} - {{interval}}")
+alertcondition(crossover == -1, title="EMA Trend Down", message="EMA Trend Down - {{ticker}} - {{interval}}")

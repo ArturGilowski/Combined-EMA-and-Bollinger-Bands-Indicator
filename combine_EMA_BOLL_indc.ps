@@ -1,0 +1,85 @@
+//@version=5
+indicator("Combined EMA and Bollinger Bands Indicator", overlay=true)
+
+// Input options for EMAs (Michael's EMA)
+emaS_value = input.int(12, minval=1, title="EMA Small - Value")
+emaB_value = input.int(21, minval=1, title="EMA Big - Value")
+
+// Additional EMA values from the second script
+ema20_value = 20
+ema50_value = 50
+ema100_value = 100
+ema200_value = 200
+
+// Calculating EMAs
+emaS = ta.ema(close, emaS_value)
+emaB = ta.ema(close, emaB_value)
+ema20 = ta.ema(close, ema20_value)
+ema50 = ta.ema(close, ema50_value)
+ema100 = ta.ema(close, ema100_value)
+ema200 = ta.ema(close, ema200_value)
+
+// Color inputs for Michael's EMA
+EMA_UpTrend_color = input(#00f908, title="EMA UpTrend Color")
+EMA_DownTrend_color = input(#ff0000, title="EMA DownTrend Color")
+
+// Color inputs for Arrows
+arrowColorUp = input(#00ff08, title="Arrow Up Color")
+arrowColorDown = input(#ff0000, title="Arrow Down Color")
+arrowSize = input.int(50, minval=1, title="Arrow Size")
+
+// Rules For Up and Down EMA trends
+EMA_UpTrend = emaS >= emaB
+EMA_DownTrend = emaS < emaB
+
+// Rules for Arrows by using EMAs Crossover state
+var float crossover = na
+if (crossover == 1)
+    crossover := na
+else if (EMA_UpTrend[1] and EMA_DownTrend)
+    crossover := -1
+else if (crossover == -1)
+    crossover := na
+else if (EMA_DownTrend[1] and EMA_UpTrend)
+    crossover := 1
+
+// Plot Michael's EMAs on chart
+plot(emaS, color=color.new(EMA_UpTrend ? EMA_UpTrend_color : EMA_DownTrend_color, 0), title="EMA Small", style=plot.style_line, linewidth=4)
+plot(emaB, color=color.new(EMA_UpTrend ? EMA_UpTrend_color : EMA_DownTrend_color, 0), title="EMA Big", style=plot.style_line, linewidth=4)
+
+// Plot Arrows when EMAs cross
+plotarrow(crossover == 1 ? 1 : crossover == -1 ? -1 : na, title="Show Arrow on EMAs Cross", colorup=arrowColorUp, colordown=arrowColorDown, maxheight=arrowSize, offset=+1, display=display.none)
+
+// Alerts
+alertcondition(crossover == 1, title="EMA Trend Up", message="EMA Trend Up - {{ticker}} - {{interval}}")
+alertcondition(crossover == -1, title="EMA Trend Down", message="EMA Trend Down - {{ticker}} - {{interval}}")
+
+// Plot additional EMAs (20, 50, 100, 200)
+plot(ema20, color=#ea00ff, title="EMA 20", linewidth=2)
+plot(ema50, color=#e1ff00, title="EMA 50", linewidth=2)
+plot(ema100, color=#02e1ff, title="EMA 100", linewidth=2)
+plot(ema200, color=#028dfe, title="EMA 200", linewidth=2)
+
+// Bollinger Bands
+length = input.int(20, minval=1)
+maType = input.string("SMA", "Basis MA Type", options = ["SMA", "EMA", "SMMA (RMA)", "WMA", "VWMA"])
+src = input(close, title="Source")
+mult = input.float(2.0, minval=0.001, maxval=50, title="StdDev")
+
+ma(source, length, _type) =>
+    switch _type
+        "SMA" => ta.sma(source, length)
+        "EMA" => ta.ema(source, length)
+        "SMMA (RMA)" => ta.rma(source, length)
+        "WMA" => ta.wma(source, length)
+        "VWMA" => ta.vwma(source, length)
+
+basis = ma(src, length, maType)
+dev = mult * ta.stdev(src, length)
+upper = basis + dev
+lower = basis - dev
+offset = input.int(0, "Offset", minval = -500, maxval = 500, display = display.data_window)
+plot(basis, "Basis", color=#2962FF, offset = offset, linewidth=2)
+p1 = plot(upper, "Upper", color=#F23645, offset = offset, linewidth=2)
+p2 = plot(lower, "Lower", color=#089981, offset = offset, linewidth=2)
+fill(p1, p2, title = "Background", color=color.rgb(33, 150, 243, 95))
