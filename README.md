@@ -5,7 +5,10 @@
 </div>
  
 - Combined EMA and Bollinger Bands Indicator
-This Pine Script indicator combines multiple technical analysis tools into a single overlay for enhanced trading insights. It includes exponential moving averages (EMAs), Bollinger Bands, and crossover detection, making it ideal for traders seeking a comprehensive market analysis tool.
+- 
+This Pine Script indicator combines multiple technical analysis tools into a single overlay for enhanced trading insights.
+
+It includes exponential moving averages (EMAs), Bollinger Bands, and crossover detection, making it ideal for traders seeking a comprehensive market analysis tool.
 ---
 ![image](https://github.com/user-attachments/assets/495a4bd6-fad9-4a4b-a35c-a76d64468b4e)
 
